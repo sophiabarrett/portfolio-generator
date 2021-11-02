@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+const generatePage = (name, github) => {
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,8 +9,11 @@
 </head>
 
 <body>
-    <h1>Jane Doe</h1>
-    <h2><a href="https://github.com/janedoe">Github</a></h2>
+    <h1>${name}</h1>
+    <h2><a href="https://github.com/${github}">Github</a></h2>
 </body>
 </html>
-    
+    `;
+};
+
+module.exports = generatePage;
