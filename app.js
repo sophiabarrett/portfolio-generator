@@ -24,7 +24,12 @@ const promptUser = () => {
         ])
 };
 
-const promptProject = () => {
+const promptProject = portfolioData => {
+    // if there is no projects array, create one
+    if (!portfolioData.projects) {
+        portfolioData.projects = [];
+    }
+    
     console.log(`
 =================
 Add a New Project
@@ -65,12 +70,19 @@ Add a New Project
             default: false
         }
     ])
+    .then(projectData => {
+        portfolioData.projects.push(projectData);
+        if (projectData.confirmAddProject) {
+            return promptProject(portfolioData);
+        } else {
+            return portfolioData;
+        }
+    })
 }
 
 promptUser()
-    .then(userAnswers => console.log(userAnswers))
     .then(promptProject)
-    .then(projectAnswers => console.log(projectAnswers));
+    .then(portfolioData => console.log(portfolioData));
 
 // const pageHTML = generatePage(name, github);
 
