@@ -183,10 +183,20 @@ const mockData = {
 //     .then(portfolioData => {
 //         const pageHTML = generatePage(portfolioData);
         const pageHTML = generatePage(mockData);
-        fs.writeFile('./index.html', pageHTML, err => {
-           if (err) throw new Error(err);
+        fs.writeFile('./dist/index.html', pageHTML, err => {
+            if (err) {
+                console.log(err);
+                return;
+            };
+            console.log('Page created! Check out index.html in this directory to see it.');
 
-        console.log('Page created! Check out index.html in this directory to see it.')
+            fs.copyFile('./src/style.css', './dist/style.css', err => {
+                if (err) {
+                    console.log(err);
+                    return;
+                };
+                console.log('Stylesheet copied successfully!');
+            });
         });
 //     });
 
