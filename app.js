@@ -1,6 +1,6 @@
 // import modules
 const inquirer = require('inquirer');
-const fs = require('fs');
+const { writeFile, copyFile } = require('./utils/generate-site.js');
 const generatePage = require('./src/page-template.js');
 
 const promptUser = () => {
@@ -183,14 +183,14 @@ promptUser()
         return generatePage(portfolioData);
     })
     .then(pageHTML => {
-        return(pageHTML);
+        return writeFile(pageHTML);
     })
     .then(writeFileResponse => {
         console.log(writeFileResponse);
         return copyFile();
     })
-    .then(copyFileResonse => {
-        console.log(copyFileResonse);
+    .then(copyFileResponse => {
+        console.log(copyFileResponse);
     })
     .catch(err => {
         console.log(err);
