@@ -8,7 +8,7 @@ const promptUser = () => {
         .prompt([
             {
                 type: 'input',
-                name: 'fullName',
+                name: 'name',
                 message: 'What is your full name? (Required)',
                 validate: nameInput => {
                     if (nameInput) {
@@ -60,9 +60,9 @@ const promptProject = portfolioData => {
     }
     
     console.log(`
-        =================
-        Add a New Project
-        =================
+=================
+Add a New Project
+=================
     `);
     return inquirer.prompt([
         {
